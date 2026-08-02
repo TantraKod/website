@@ -5,10 +5,7 @@ import LogoContainer from './LogoContainer';
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'Products', href: '#products' },
   { label: 'Process', href: '#process' },
-  { label: 'Tech Stack', href: '#tech' },
-  { label: 'Portfolio', href: '#portfolio' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -41,13 +38,13 @@ export default function Navbar() {
         style={{ height: '90px' }}
         aria-label="Main navigation"
       >
-        {/* ── Official Premium Logo Container ── */}
+        {/* ── Logo ── */}
         <a
           href="#home"
-          className="flex items-center focus-ring rounded-[10px] md:rounded-[14px]"
+          className="flex items-center focus-ring rounded-lg"
           aria-label="TantraKod Home"
         >
-          <LogoContainer size="md" />
+          <LogoContainer size="sm" />
         </a>
 
         {/* ── Desktop Links ── */}

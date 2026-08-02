@@ -16,10 +16,8 @@ export const BRAND_INFO = {
 };
 
 export const SOCIAL_LINKS = [
-  { label: "GitHub", href: "https://github.com/TantraKod", icon: "Github" },
   { label: "LinkedIn", href: "https://linkedin.com/company/tantrakod", icon: "Linkedin" },
   { label: "Instagram", href: "https://instagram.com/tantrakod", icon: "Instagram" },
   { label: "X (Twitter)", href: "https://x.com/TantraKod", icon: "Twitter" },
   { label: "YouTube", href: "https://youtube.com/@TantraKod", icon: "Youtube" },
-  { label: "Email", href: "mailto:tantrakod.official@gmail.com", icon: "Mail" },
 ];

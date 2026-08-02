@@ -4,12 +4,8 @@ import TrustedBy from './components/TrustedBy';
 import About from './components/About';
 import WhyChoose from './components/WhyChoose';
 import Services from './components/Services';
-import Products from './components/Products';
 import Industries from './components/Industries';
 import Process from './components/Process';
-import TechStack from './components/TechStack';
-import Portfolio from './components/Portfolio';
-import CaseStudies from './components/CaseStudies';
 import OurFocus from './components/OurFocus';
 import FAQ from './components/FAQ';
 import ContactCTA from './components/ContactCTA';
@@ -27,12 +23,8 @@ export default function App() {
         <About />
         <WhyChoose />
         <Services />
-        <Products />
         <Industries />
         <Process />
-        <TechStack />
-        <Portfolio />
-        <CaseStudies />
         <OurFocus />
         <FAQ />
         <ContactCTA />

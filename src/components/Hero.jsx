@@ -26,7 +26,7 @@ export default function Hero() {
     <section
       id="home"
       className="relative overflow-hidden bg-white"
-      style={{ paddingTop: '70px', paddingBottom: '90px' }}
+      style={{ paddingTop: '45px', paddingBottom: '75px' }}
     >
       {/* ── Ambient Background Glows ── */}
       <div
@@ -47,13 +47,13 @@ export default function Hero() {
           }}
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center lg:pl-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center lg:pl-12">
           {/* ── Left Column: Content ── */}
           <motion.div
             variants={container}
             initial="hidden"
             animate="show"
-            className="lg:col-span-6 flex flex-col"
+            className="lg:col-span-6 flex flex-col justify-center"
           >
             {/* Badges */}
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-2.5 mb-5">
@@ -94,7 +94,7 @@ export default function Hero() {
             {/* Description */}
             <motion.p
               variants={fadeUp}
-              className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-xl mb-8"
+              className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-2xl mb-8"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               {BRAND_INFO.description}
@@ -104,21 +104,21 @@ export default function Hero() {
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-10">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm font-semibold shadow-sm hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all focus-ring"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 h-12 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm font-semibold shadow-sm hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all focus-ring"
               >
                 Start Your Project
                 <ArrowUpRight className="w-4 h-4" strokeWidth={2.5} />
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border-2 border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white text-sm font-semibold transition-all hover:-translate-y-0.5 active:translate-y-0 focus-ring"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 h-12 rounded-xl border-2 border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white text-sm font-semibold shadow-sm hover:shadow-md hover:scale-[1.02] hover:-translate-y-0.5 active:scale-100 transition-all duration-200 focus-ring"
               >
                 Explore Our Services
                 <ChevronRight className="w-4 h-4" strokeWidth={2.5} />
               </a>
             </motion.div>
 
-            {/* Factual Focus Row (No fake numbers) */}
+            {/* Factual Focus Row */}
             <motion.div
               variants={fadeUp}
               className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-[#E2E8F0]"
@@ -149,7 +149,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 flex items-center justify-center"
           >
-            <div className="relative w-full rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-xl bg-white group transition-all duration-300 hover:shadow-2xl">
+            <div className="relative w-full lg:scale-[1.08] lg:origin-center rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-xl bg-white group transition-all duration-300 hover:shadow-2xl">
               <img
                 src={TANTRAKOD_BANNER}
                 alt="TantraKod Official Banner - We Build The Future"

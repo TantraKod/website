@@ -13,9 +13,9 @@
 import emailjs from '@emailjs/browser';
 
 /* ── Config pulled from Vite env with fallback to TantraKod defaults ── */
-const PUBLIC_KEY   = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-const SERVICE_ID   = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_tantrakod';
-const TEMPLATE_ID  = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_xit8sqw';
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_tantrakod';
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_xit8sqw';
 
 /**
  * Initialise EmailJS with the public key if configured.
@@ -47,12 +47,11 @@ export async function sendContactEmail({ name, email, subject, message }) {
   }
 
   const templateParams = {
-    from_name:      name.trim(),
-    from_email:     email.trim().toLowerCase(),
-    subject:        subject.trim(),
-    message:        message.trim(),
-    to_email:       'tantrakod.official@gmail.com',
-    submitted_date: new Intl.DateTimeFormat('en-IN', {
+    from_name: name.trim(),
+    from_email: email.trim().toLowerCase(),
+    company: subject.trim(),
+    message: message.trim(),
+    time: new Intl.DateTimeFormat('en-IN', {
       dateStyle: 'full',
       timeStyle: 'short',
       timeZone: 'Asia/Kolkata',

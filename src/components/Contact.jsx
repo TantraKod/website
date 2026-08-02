@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { MapPin, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { sendContactEmail } from '../services/emailService';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,12 +10,13 @@ export default function Contact() {
     message: ''
   });
   const [status, setStatus] = useState({ type: '', msg: '' });
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.name.trim() || !formData.email.trim() || !formData.service || !formData.message.trim()) {
@@ -22,16 +24,32 @@ export default function Contact() {
       return;
     }
 
-    setStatus({
-      type: 'success',
-      msg: `Thank you, ${formData.name.trim()}! Your inquiry has been sent to our engineering lead. We will reach out within 24 hours.`
-    });
+    setSubmitting(true);
+    setStatus({ type: '', msg: '' });
 
-    setFormData({ name: '', email: '', service: '', message: '' });
+    try {
+      await sendContactEmail({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.service,
+        message: formData.message
+      });
 
-    setTimeout(() => {
-      setStatus({ type: '', msg: '' });
-    }, 6000);
+      setStatus({
+        type: 'success',
+        msg: 'Thank you! Your inquiry has been sent successfully.'
+      });
+
+      setFormData({ name: '', email: '', service: '', message: '' });
+    } catch (error) {
+      console.error(error);
+      setStatus({
+        type: 'error',
+        msg: 'Unable to send your message. Please try again.'
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -54,22 +72,12 @@ export default function Contact() {
 
           <div className="space-y-4 pt-4">
             <div className="glass-panel p-5 rounded-2xl flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-white text-sm">Direct Email</h4>
-                <p className="text-slate-400 text-sm">contact@tantrakod.com</p>
-              </div>
-            </div>
-
-            <div className="glass-panel p-5 rounded-2xl flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-6 h-6" />
               </div>
               <div>
                 <h4 className="font-heading font-bold text-white text-sm">Global Headquarters</h4>
-                <p className="text-slate-400 text-sm">TantraKod Tech Park, Innovation Hub</p>
+                <p className="text-slate-400 text-sm">India & Asia</p>
               </div>
             </div>
           </div>
@@ -88,7 +96,8 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full bg-[#090c14] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                  disabled={submitting}
+                  className="w-full bg-[#090c14] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all disabled:opacity-50"
                 />
               </div>
 
@@ -100,7 +109,8 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="john@company.com"
-                  className="w-full bg-[#090c14] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                  disabled={submitting}
+                  className="w-full bg-[#090c14] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all disabled:opacity-50"
                 />
               </div>
             </div>
@@ -111,7 +121,8 @@ export default function Contact() {
                 name="service"
                 value={formData.service}
                 onChange={handleChange}
-                className="w-full bg-[#090c14] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                disabled={submitting}
+                className="w-full bg-[#090c14] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all disabled:opacity-50"
               >
                 <option value="" disabled>Select a Service or Product</option>
                 <option value="website">Website Development</option>
@@ -139,16 +150,27 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Briefly describe your project requirements and timelines..."
-                className="w-full bg-[#090c14] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all resize-none"
+                disabled={submitting}
+                className="w-full bg-[#090c14] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all resize-none disabled:opacity-50"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-[length:200%_auto] hover:bg-right text-white font-bold text-sm shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all duration-300 flex items-center justify-center gap-2"
+              disabled={submitting}
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-[length:200%_auto] hover:bg-right text-white font-bold text-sm shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Submit Project Inquiry
-              <Send className="w-4 h-4" />
+              {submitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Submit Project Inquiry
+                  <Send className="w-4 h-4" />
+                </>
+              )}
             </button>
 
             {status.msg && (

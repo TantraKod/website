@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Mail, Github, Linkedin, Youtube, Instagram, Twitter,
+  Linkedin, Youtube, Instagram, Twitter,
   MapPin, CheckCircle2, ArrowUpRight, AlertCircle, Loader2,
 } from 'lucide-react';
 import { useState, useCallback, useRef } from 'react';
@@ -29,7 +29,6 @@ const notifVariants = {
    Social profiles
 ───────────────────────────────────────────── */
 const SOCIAL_PROFILES = [
-  { label: 'GitHub',      href: 'https://github.com/TantraKod',           icon: Github    },
   { label: 'LinkedIn',    href: 'https://linkedin.com/company/tantrakod', icon: Linkedin  },
   { label: 'Instagram',   href: 'https://instagram.com/tantrakod',        icon: Instagram },
   { label: 'X (Twitter)', href: 'https://x.com/TantraKod',               icon: Twitter   },
@@ -250,7 +249,7 @@ export default function ContactCTA() {
 
       notify(
         'success',
-        `Thank you! Your inquiry has been recorded. Please contact us directly at ${BRAND_INFO.email}.`
+        'Thank you! Your inquiry has been sent successfully.'
       );
 
       /* Reset form */
@@ -259,15 +258,11 @@ export default function ContactCTA() {
       setErrors({});
 
     } catch (err) {
-      console.error('[ContactForm]', err);
+      console.error(err);
 
-      /* Friendly error — distinguish "not configured" from network failures */
-      const isConfig = err?.message?.includes('environment variables');
       notify(
         'error',
-        isConfig
-          ? '⚙️ Email service is not configured yet. Email us directly at ' + BRAND_INFO.email
-          : '❌ Failed to send message. Please try again or email us at ' + BRAND_INFO.email
+        'Unable to send your message. Please try again.'
       );
     } finally {
       setSubmitting(false);
@@ -339,21 +334,6 @@ export default function ContactCTA() {
               </motion.p>
 
               <motion.div variants={fadeUp} className="flex flex-col gap-6">
-                {/* Direct email CTA */}
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-[#64748B] mb-2">
-                    Direct Email
-                  </p>
-                  <a
-                    href={BRAND_INFO.mailTo}
-                    className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm font-semibold shadow-sm hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all focus-ring"
-                    aria-label={`Send email to ${BRAND_INFO.email}`}
-                  >
-                    <Mail className="w-4 h-4" strokeWidth={2} />
-                    {BRAND_INFO.email}
-                  </a>
-                </div>
-
                 {/* Social links */}
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-[#64748B] mb-3">
@@ -562,14 +542,6 @@ export default function ContactCTA() {
                     </>
                   )}
                 </button>
-
-                <p className="text-[10px] text-[#475569] text-center">
-                  Your message goes directly to our inbox.{' '}
-                  <a href={BRAND_INFO.mailTo} className="text-[#60A5FA] hover:underline">
-                    Email us directly
-                  </a>{' '}
-                  if you prefer.
-                </p>
               </form>
             </motion.div>
 
