@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <rect width="500" height="500" rx="100" fill="#FFFFFF"/>
+  <g transform="translate(45, 50) scale(0.85)">
+    <!-- Black 'T' -->
+    <path d="M 60 100 L 260 100 L 260 140 L 190 200 L 190 280 L 140 280 L 140 140 L 60 140 Z" fill="#0F172A" />
+    <path d="M 60 100 L 260 100 L 210 140 L 175 140 L 175 280 L 135 280 L 135 140 L 60 140 Z" fill="#0F172A"/>
+    
+    <!-- Blue Gradient 'K' -->
+    <defs>
+      <linearGradient id="tkBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#60A5FA"/>
+        <stop offset="50%" stop-color="#2563EB"/>
+        <stop offset="100%" stop-color="#1D4ED8"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Main Diagonal K stem -->
+    <path d="M 215 190 L 340 100 L 290 240 L 375 300 L 320 300 L 245 240 L 215 265 Z" fill="url(#tkBlue)"/>
+    
+    <!-- TK Top-Right Pixel Grid (3 blue squares) -->
+    <rect x="345" y="75" width="16" height="16" rx="2" fill="#2563EB"/>
+    <rect x="367" y="90" width="16" height="16" rx="2" fill="#2563EB"/>
+    <rect x="345" y="105" width="16" height="16" rx="2" fill="#2563EB"/>
+  </g>
+</svg>

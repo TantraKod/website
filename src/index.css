@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* ============================================================
+   TantraKod Design Tokens
+   
+   Color System:
+     Blue = Technology & Trust
+     Orange = Innovation & Action (used sparingly)
+     White = Clarity & Enterprise Confidence
+   
+   Typography:
+     Headings = Plus Jakarta Sans (800, tracking -0.05em)
+     Body = Manrope (400–600, comfortable line-height)
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --color-primary: #2563EB;
+    --color-primary-hover: #1D4ED8;
+    --color-secondary: #60A5FA;
+    --color-orange: #F97316;
+    --color-orange-light: #FDBA74;
+    --color-orange-hover: #EA580C;
+
+    /* Backgrounds */
+    --bg-white: #FFFFFF;
+    --bg-crystal: #FCFCFD;
+    --bg-section: #F8FAFC;
+
+    /* Text */
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+
+    /* Borders & Surfaces */
+    --border: #E2E8F0;
+    --border-hover: #CBD5E1;
+
+    /* Semantic */
+    --success: #16A34A;
+    --warning: #F59E0B;
+    --error: #DC2626;
+
+    /* Typography */
+    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-crystal);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+  }
+}
+
+/* ============================================================
+   Structural Utilities
+   ============================================================ */
+
+/* Swiss 12-column container — 1320px max */
+.container-main {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-main {
+    padding: 0 2.5rem;
+  }
+}
+
+/* Enterprise Card — consistent card treatment across all sections */
+.card {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 1.75rem; /* 28px */
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-hover);
+  box-shadow:
+    0 20px 40px -12px rgba(15, 23, 42, 0.08),
+    0 8px 16px -8px rgba(15, 23, 42, 0.04);
+}
+
+/* Keyboard-accessible focus ring */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+
+/* Infinite marquee scroll */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+  /* Offset for sticky 90px navbar so anchor targets aren't hidden */
+  scroll-padding-top: 100px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}

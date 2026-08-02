@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    
+    <linearGradient id="accentGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    
+    <linearGradient id="accentGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.12)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.02)" />
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Base -->
+  <rect width="800" height="600" rx="24" fill="url(#bgGrad)" />
+  
+  <!-- Glowing Orbs -->
+  <circle cx="250" cy="200" r="180" fill="#06b6d4" opacity="0.15" filter="url(#glow)" />
+  <circle cx="550" cy="380" r="160" fill="#a855f7" opacity="0.18" filter="url(#glow)" />
+  <circle cx="400" cy="280" r="220" fill="#3b82f6" opacity="0.1" filter="url(#glow)" />
+
+  <!-- Isometric Grid Pattern overlay -->
+  <g opacity="0.15" stroke="#38bdf8" stroke-width="1">
+    <path d="M-100 100 L900 600 M-100 200 L900 700 M-100 0 L900 500 M-100 300 L900 800" />
+    <path d="M-100 500 L900 0 M-100 600 L900 100 M-100 400 L900 -100 M-100 700 L900 200" />
+  </g>
+
+  <!-- Central Dashboard / Code Window Graphic -->
+  <g transform="translate(140, 100)" filter="url(#shadow)">
+    <!-- Main Window Background -->
+    <rect width="520" height="340" rx="16" fill="#0f172a" stroke="url(#accentGrad1)" stroke-width="2" opacity="0.95" />
+    
+    <!-- Window Header -->
+    <path d="M0 16 A16 16 0 0 1 16 0 L504 0 A16 16 0 0 1 520 16 L520 44 L0 44 Z" fill="#1e293b" />
+    <!-- Window Controls -->
+    <circle cx="24" cy="22" r="6" fill="#ef4444" />
+    <circle cx="44" cy="22" r="6" fill="#f59e0b" />
+    <circle cx="64" cy="22" r="6" fill="#10b981" />
+    
+    <!-- Title Pill -->
+    <rect x="200" y="14" width="120" height="16" rx="8" fill="#334155" />
+
+    <!-- Code / Data Visualization Elements inside window -->
+    <!-- Left Sidebar mockup -->
+    <rect x="20" y="60" width="100" height="260" rx="8" fill="#1e293b" opacity="0.6" />
+    <rect x="35" y="80" width="70" height="10" rx="4" fill="url(#accentGrad1)" />
+    <rect x="35" y="105" width="50" height="8" rx="4" fill="#475569" />
+    <rect x="35" y="125" width="60" height="8" rx="4" fill="#475569" />
+    <rect x="35" y="145" width="40" height="8" rx="4" fill="#475569" />
+    <rect x="35" y="180" width="70" height="8" rx="4" fill="url(#accentGrad2)" opacity="0.8" />
+    <rect x="35" y="200" width="55" height="8" rx="4" fill="#475569" />
+    <rect x="35" y="220" width="65" height="8" rx="4" fill="#475569" />
+
+    <!-- Code Editor area -->
+    <rect x="135" y="60" width="365" height="150" rx="8" fill="#090d16" />
+    <!-- Simulated Code Lines -->
+    <rect x="155" y="78" width="80" height="8" rx="3" fill="#ec4899" />
+    <rect x="242" y="78" width="100" height="8" rx="3" fill="#38bdf8" />
+    <rect x="175" y="96" width="140" height="8" rx="3" fill="#a855f7" />
+    <rect x="322" y="96" width="60" height="8" rx="3" fill="#34d399" />
+    <rect x="175" y="114" width="90" height="8" rx="3" fill="#f43f5e" />
+    <rect x="272" y="114" width="110" height="8" rx="3" fill="#fbbf24" />
+    <rect x="195" y="132" width="180" height="8" rx="3" fill="#38bdf8" />
+    <rect x="155" y="150" width="70" height="8" rx="3" fill="#a855f7" />
+    <rect x="155" y="168" width="120" height="8" rx="3" fill="#34d399" />
+
+    <!-- Analytics Chart area below code -->
+    <g transform="translate(135, 220)">
+      <rect width="365" height="100" rx="8" fill="#1e293b" opacity="0.7" />
+      <!-- Wave Line Graph -->
+      <path d="M 20 70 Q 70 20, 120 50 T 220 30 T 320 60 L 345 40" fill="none" stroke="url(#accentGrad1)" stroke-width="4" filter="url(#glow)" />
+      <!-- Graph Nodes -->
+      <circle cx="120" cy="50" r="5" fill="#06b6d4" />
+      <circle cx="220" cy="30" r="5" fill="#3b82f6" />
+      <circle cx="320" cy="60" r="5" fill="#6366f1" />
+      <!-- Shaded area under graph -->
+      <path d="M 20 70 Q 70 20, 120 50 T 220 30 T 320 60 L 345 40 L 345 85 L 20 85 Z" fill="url(#glowGrad)" />
+    </g>
+  </g>
+
+  <!-- Floating Glass Cards (Overlays) -->
+  <!-- Top Right AI Card -->
+  <g transform="translate(500, 60)" filter="url(#shadow)">
+    <rect width="180" height="90" rx="14" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <circle cx="35" cy="45" r="18" fill="url(#accentGrad2)" />
+    <!-- AI Brain / Spark Icon -->
+    <path d="M35 34 L37 43 L46 45 L37 47 L35 56 L33 47 L24 45 L33 43 Z" fill="#ffffff" />
+    <rect x="65" y="32" width="80" height="10" rx="4" fill="#ffffff" />
+    <rect x="65" y="48" width="55" height="8" rx="4" fill="#a855f7" />
+  </g>
+
+  <!-- Bottom Left Floating Cloud Node Card -->
+  <g transform="translate(80, 360)" filter="url(#shadow)">
+    <rect width="200" height="100" rx="14" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <circle cx="40" cy="50" r="22" fill="url(#accentGrad1)" />
+    <!-- Cloud Icon -->
+    <path d="M34 54 C31 54 29 52 29 49 C29 46.5 31 44.5 33.5 44.1 C34.5 41 37.3 39 40.5 39 C44.2 39 47.3 41.7 47.8 45.4 C49.6 45.8 51 47.4 51 49.5 C51 52 49 54 46.5 54 Z" fill="#ffffff" />
+    <rect x="75" y="36" width="95" height="10" rx="4" fill="#ffffff" />
+    <rect x="75" y="52" width="70" height="8" rx="4" fill="#38bdf8" />
+    <rect x="75" y="66" width="45" height="6" rx="3" fill="#64748b" />
+  </g>
+
+  <!-- Floating Particles & Glowing Accents -->
+  <circle cx="120" cy="140" r="4" fill="#06b6d4" filter="url(#glow)" />
+  <circle cx="700" cy="220" r="6" fill="#a855f7" filter="url(#glow)" />
+  <circle cx="680" cy="480" r="5" fill="#38bdf8" filter="url(#glow)" />
+  <circle cx="150" cy="510" r="7" fill="#6366f1" filter="url(#glow)" />
+</svg>

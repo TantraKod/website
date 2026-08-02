@@ -1,0 +1,6 @@
+# robots.txt — TantraKod
+
+User-agent: *
+Allow: /
+
+Sitemap: https://tantrakod.pages.dev/sitemap.xml
